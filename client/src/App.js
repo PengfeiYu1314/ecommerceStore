@@ -6,6 +6,7 @@ import HomeScreen from './screens/HomeScreen'
 import ProductScreen from './screens/ProductScreen'
 import {BrowserRouter as Router, Route } from 'react-router-dom'
 import CartScreen from './screens/CartScreen'
+import LoginScreen from './screens/LoginScreen'
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
     <Header />
     <main className="py-3">
       <Container>
-
+        <Route path='/login' component={LogintScreen} />
         <Route path='/' component={HomeScreen} exact />
         <Route path='/product/:id' component={ProductScreen} />
         <Route path='/cart/:id?' component={CartScreen} />

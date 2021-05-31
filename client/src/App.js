@@ -12,7 +12,7 @@ import ProfileScreen from './screens/RegisterScreen'
 import ShippingScreen from './screens/ShippingScreen'
 import PaymentScreen from './screens/PaymentScreen'
 import PlaceOrderScreen from './screens/PlaceOrderScreen'
-
+import OrderScreen from './screens/OrderScreen'
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
     <Header />
     <main className="py-3">
       <Container>
+      <Route path='/order/:id' compoent={OrderScreen} />
         <Route path='/profile' compoent={ProfileScreen} />
         <Route path='/placeorder' compoent={PlaceOrderScreen} />
         <Route path='/login' component={LoginScreen} />

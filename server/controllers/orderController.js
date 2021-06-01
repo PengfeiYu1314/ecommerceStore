@@ -1,7 +1,7 @@
-import asyncHandler from 'express-async-handler'
+import expressasyncHandler from 'express-async-handler'
 import Order from '../models/orderModel.js'
 
-const addOrderItems = asyncHandler(async (req, res) => {
+const addOrderItems = expressasyncHandler(async (req, res) => {
     const {
       orderItems,
       shippingAddress,
@@ -34,7 +34,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     }
   })
 
-  const getOrderById = asyncHandler(async (req, res) => {
+  const getOrderById = expressasyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id).populate(
       'user',
       'name email'
@@ -48,7 +48,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     }
   })
 
-  const updateOrderToPaid = asyncHandler(async (req, res) => {
+  const updateOrderToPaid = expressasyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id)
   
     if (order) {
@@ -70,7 +70,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     }
   })
 
-  const updateOrderToDelivered = asyncHandler(async (req, res) => {
+  const updateOrderToDelivered = expressasyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id)
   
     if (order) {
@@ -86,12 +86,12 @@ const addOrderItems = asyncHandler(async (req, res) => {
     }
   })
 
-  const getMyOrders = asyncHandler(async (req, res) => {
+  const getMyOrders = expressasyncHandler(async (req, res) => {
     const orders = await Order.find({ user: req.user._id })
     res.json(orders)
   })
 
-  const getOrders = asyncHandler(async (req, res) => {
+  const getOrders = expressasyncHandler(async (req, res) => {
     const orders = await Order.find({}).populate('user', 'id name')
     res.json(orders)
   })

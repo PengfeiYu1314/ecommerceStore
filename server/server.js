@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import colors from 'colors'
 import connectDB from './config/db.js'
 import path from 'path'
+import morgan from 'morgan'
 
 import uploadRoutes from './routes/uploadRoutes.js'
 import productRoutes from './routes/productRoutes.js'
@@ -17,7 +18,12 @@ connectDB();
 const app = express();
 app.use(express.json())
 
+if(process.env.NODE_ENV === 'develop') {
+    app.use(morgan('dev'))
+}
+
 app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID))
+
 
 app.get('/', (req, res) => {
     res.send('API is running....')
